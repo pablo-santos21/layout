@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login</title>
+    <style>
+        .example1 {
+            background-image: url(./LogoBackground.png);
+            background-position: center top;
+            background-repeat: no-repeat, repeat;
+            background-size: cover;
+            height: 500px;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+
+        .body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Poppins', sans-serif;
+            background-size: cover;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            position: relative;
+        }
+
+        .left-side-container,
+        .right-side-container {
+            border-radius: 20px;
+            overflow: hidden;
+            width: 35%;
+            position: relative;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
+        }
+
+        .left-side-container {
+            height: 88vh;
+            z-index: 1;
+        }
+
+        .right-side-container {
+            height: 70vh;
+            z-index: 2;
+        }
+
+        .left-side {
+            background: url('./bg-esquerdo.png') no-repeat center center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            height: 100%;
+        }
+
+        .left-side .logo {
+            margin-bottom: auto;
+        }
+
+        .right-side {
+            background: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            height: 100%;
+        }
+
+        .right-side .logo {
+            margin-bottom: 40px;
+        }
+
+        .right-side .logo img {
+            width: 200px;
+            margin-top: 50px;
+        }
+
+        .right-side .welcome-text {
+            font-family: 'Poppins', sans-serif;
+            margin-top: -10px;
+            font-size: 40px;
+            font-weight: 400;
+            color: #F14E18;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .right-side .welcome-text span {
+            display: block;
+            margin-top: -15px;
+            font-size: 20px;
+            color: #4E4E4E;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .right-side .login-text {
+            font-weight: bold;
+            margin-top: -20px;
+            color: #4E4E4E;
+            font-size: 30px;
+            text-transform: uppercase;
+        }
+
+        .right-side input {
+            width: 40%;
+            border: none;
+            border-bottom: 1px solid #000;
+            padding: 10px;
+            outline: none;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .right-side input::placeholder {
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .right-side .forgot-password {
+            font-size: 12px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            color: #4F4F4F;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .right-side .btn {
+            width: 100px;
+            padding: 15px;
+            border: none;
+            border-radius: 20px;
+            color: white;
+            cursor: pointer;
+            margin-bottom: 40px;
+            text-align: center;
+            font-weight: 800;
+            background-color: #F14E18;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
+        }
+
+        .right-side .btn:hover {
+            background-color: #d44114;
+        }
+
+        #btn-login {
+            font-weight: 700;
+            border-radius: 30px;
+        }
+
+        .div-recaptcha {
+            margin-bottom: 2rem;
+            border-radius: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                margin: 0px 10px 0px 10px;
+            }
+
+            .left-side-container,
+            .right-side-container {
+                width: 100%;
+                margin: 0;
+            }
+
+            .left-side-container {
+                height: 50%;
+            }
+
+            .right-side-container {
+                height: auto;
+                width: 90%;
+                margin: 0 auto;
+                margin-top: -150px;
+                margin-bottom: 20px;
+            }
+
+            .right-side {
+                padding: 20px;
+            }
+
+            .right-side .logo img {
+                width: 150px;
+                margin-top: 20px;
+            }
+
+            .right-side .welcome-text {
+                font-size: 30px;
+            }
+
+            .right-side .welcome-text span {
+                font-size: 18px;
+            }
+
+            .right-side .login-text {
+                font-size: 25px;
+            }
+
+            .right-side input {
+                width: 80%;
+                margin-bottom: 20px;
+            }
+
+            .right-side .btn {
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body class="example1">
+    <form id="form-login" class="form" method="post" action="/Auth/Login">
+        <div id="divErro" class="errorHandler alert alert-danger no-display">
+            <label id="mensagemErro"></label>
+        </div>
+        <input type="hidden" id="ReturnUrl" name="ReturnUrl" value="" />
+
+        <div class="container">
+            <div class="left-side-container">
+                <div class="left-side">
+                </div>
+            </div>
+            <div class="right-side-container">
+                <div class="right-side">
+                    <div class="logo">
+                        <img src="./LogonLogo.png" alt="Logo" />
+                    </div>
+                    <div class="welcome-text">
+                        <b>BEM-VINDO</b>
+                        <span class="welcome-span">AO SISTEMA ELAW</span>
+                    </div>
+                    <br />
+                    <div class="login-text">
+                        <p>LOGIN </p>
+                    </div>
+                    <input type="text" id="Email" name="Email" class="form-control" style="width:280px" placeholder="Usuário" />
+                    <input type="password" id="Password" name="Password" class="form-control password" style="width:280px" placeholder="Senha" autocomplete="off" />
+                    <a href="/Auth/EsqueciMinhaSenha" class="forgot-password">Esqueci minha senha</a>
+
+                    <button id="btn-login" class="btn btn-access" type="submit">ACESSAR</button>
+
+                    <div id="recaptcha-container" style="display: none;">
+                        <div class="col-12 mb-3 mt-3 p-0 d-flex justify-content-center">
+                            <div class="g-recaptcha" data-theme="light" data-size="normal" data-sitekey="" data-callback="recaptchaCallback" data-expired-callback="recaptchaCallbackExpired"></div>
+                        </div>
+                    </div>
+
+                    <a href="/Resources/modelos/Logon.pdf">Manual Google Authenticator</a>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</body>
+
+</html>
